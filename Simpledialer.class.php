@@ -500,7 +500,7 @@ class Simpledialer extends FreePBX_Helpers implements BMO {
         }
 
         // Get announcements from FreePBX
-        $sql = "SELECT announcement_id, description FROM announcements ORDER BY description";
+        $sql = "SELECT announcement_id, description FROM announcement ORDER BY description";
         $sth = $this->db->prepare($sql);
         $sth->execute();
         $announcements = $sth->fetchAll(\PDO::FETCH_ASSOC);
