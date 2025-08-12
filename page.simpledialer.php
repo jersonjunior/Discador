@@ -482,13 +482,13 @@ if (isset($_FILES['audio_file']) && $_FILES['audio_file']['error'] === UPLOAD_ER
                                 <?php foreach ($campaigns as $campaign): ?>
                                     <?php $stats = $simpledialer->getCampaignStats($campaign['id']); ?>
                                     <tr>
-                                        <td><?php echo htmlspecialchars($campaign['name']); ?></td>
-                                        <td><?php echo htmlspecialchars($campaign['description']); ?></td>
-                                        <td>
-                                            <span class="label label-<?php echo $campaign['status'] == 'active' ? 'success' : ($campaign['status'] == 'stopped' ? 'danger' : 'default'); ?>">
-                                                <?php echo ucfirst($campaign['status']); ?>
-                                            </span>
-                                        </td>
+                                    <td><?php echo isset($campaign['name']) ? htmlspecialchars($campaign['name']) : ''; ?></td>
+                                    <td><?php echo isset($campaign['description']) ? htmlspecialchars($campaign['description']) : ''; ?></td>
+                                    <td>
+                                        <span class="label label-<?php echo isset($campaign['status']) ? ($campaign['status'] == 'active' ? 'success' : ($campaign['status'] == 'stopped' ? 'danger' : 'default')) : 'default'; ?>">
+                                            <?php echo isset($campaign['status']) ? ucfirst($campaign['status']) : ''; ?>
+                                        </span>
+                                    </td>
                                         <td><?php echo $stats['total_contacts']; ?></td>
                                         <td>
                                             <?php if ($stats['total_contacts'] > 0): ?>
